@@ -1,4 +1,4 @@
-.mainContent{
+.mainContent {
     display: grid;
     grid-template-areas:
             "aff"
@@ -6,28 +6,32 @@
     grid-template-columns: 11fr 1fr;
     grid-gap: 20px;
 }
+
 .mainContent_affairs {
     grid-area: aff;
 }
 
-.mainContent_buttons{
+.mainContent_buttons {
     grid-area: b;
 }
 
-.mainContent_buttons button{
+
+.mainContent_buttons button {
     margin: 0 20px 0 0;
     width: 60px;
     background-color: blanchedalmond;
+    border-radius: 5px;
 }
-.mainContent_buttons button:hover{
+
+.mainContent_buttons button:hover {
     background-color: blue;
     color: white;
 }
 
 .content {
     display: grid;
-    grid-template-areas: "n a";
-    grid-template-columns: 245px 8fr;
+    grid-template-areas: "n p a";
+    grid-template-columns: 164px 50px 7fr;
     grid-gap: 30px;
 }
 
@@ -36,6 +40,14 @@
     padding: 5px;
     font-weight: bold;
     border-bottom: solid 1px white;
+    color: indigo;
+}
+
+.content_priority {
+    grid-area: p;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
 }
 
 .content_action {
@@ -43,10 +55,12 @@
     display: flex;
     align-items: center;
 }
+
 .content_action button {
     border-radius: 50%;
     background-color: green;
 }
+
 .content_action button:hover {
     background-color: red;
     color: white;
