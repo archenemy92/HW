@@ -1,0 +1,53 @@
+.mainContent{
+    display: grid;
+    grid-template-areas:
+            "aff"
+            "b";
+    grid-template-columns: 11fr 1fr;
+    grid-gap: 20px;
+}
+.mainContent_affairs {
+    grid-area: aff;
+}
+
+.mainContent_buttons{
+    grid-area: b;
+}
+
+.mainContent_buttons button{
+    margin: 0 20px 0 0;
+    width: 60px;
+    background-color: blanchedalmond;
+}
+.mainContent_buttons button:hover{
+    background-color: blue;
+    color: white;
+}
+
+.content {
+    display: grid;
+    grid-template-areas: "n a";
+    grid-template-columns: 245px 8fr;
+    grid-gap: 30px;
+}
+
+.content_name {
+    grid-area: n;
+    padding: 5px;
+    font-weight: bold;
+    border-bottom: solid 1px white;
+}
+
+.content_action {
+    grid-area: a;
+    display: flex;
+    align-items: center;
+}
+.content_action button {
+    border-radius: 50%;
+    background-color: green;
+}
+.content_action button:hover {
+    background-color: red;
+    color: white;
+}
