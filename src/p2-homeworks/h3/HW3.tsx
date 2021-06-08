@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import GreetingContainer from './GreetingContainer'
+import React, {useState} from "react"
+import GreetingContainer from "./GreetingContainer"
 import {v1} from "uuid"
 
 // types
@@ -13,7 +13,7 @@ function HW3() {
     const [users, setUsers] = useState<UserType[]>([])
     console.log(users)
     const addUserCallback = (name: string) => {
-        setUsers([...users, {_id:v1(), name}]) // need to fix
+        setUsers((users) => [...users, {_id: v1(), name}])
     }
 
     return (
