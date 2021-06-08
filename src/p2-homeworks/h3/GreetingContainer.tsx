@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from "react"
+import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from "react"
 import Greeting from "./Greeting"
 import {UserType} from "./HW3"
 
@@ -18,15 +18,20 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
     const [error, setError] = useState<string>("")
     const disabled = true
 
+    useEffect(() => {
+        if (error) {
+            setTimeout(() => setError(""), 3000)
+        }
+    }, [error])
 
-    const deleteError = () => {
-        setTimeout(() => setError(""), 3000)
-    }
+    /*  const deleteError = () => {
+          setTimeout(() => setError(""), 3000)
+      }*/
 
     const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => {
         if (name.length === 0) {
             setError("name is required")
-            deleteError()
+            //deleteError()
         }
         setName(e.currentTarget.value.trim())
     }
@@ -44,7 +49,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
     const onPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter" && name.length === 0) {
             setError("name is required")
-            deleteError()
+            //deleteError()
         }
         if (e.key === "Enter") {
             addUser()
