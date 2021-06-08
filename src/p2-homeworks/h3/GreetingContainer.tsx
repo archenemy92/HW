@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
-import Greeting from './Greeting'
+import React, {ChangeEvent, KeyboardEvent, useState} from "react"
+import Greeting from "./Greeting"
+import {UserType} from "./HW3"
 
 type GreetingContainerPropsType = {
-    users: any // need to fix any
-    addUserCallback: any // need to fix any
+    users: UserType[]
+    addUserCallback: (name: string) => void
 }
 
 // более простой и понятный для новичков
@@ -11,24 +12,55 @@ type GreetingContainerPropsType = {
 
 // более современный и удобный для про :)
 // уровень локальной логики
-const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUserCallback}) => { // деструктуризация пропсов
-    const [name, setName] = useState<any>('') // need to fix any
-    const [error, setError] = useState<any>('') // need to fix any
 
-    const setNameCallback = (e: any) => { // need to fix any
-        setName('') // need to fix
+const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUserCallback}) => {
+    const [name, setName] = useState<string>("")
+    const [error, setError] = useState<string>("")
+    const disabled = true
+
+
+    const deleteError = () => {
+        setTimeout(() => setError(""), 3000)
+    }
+
+    const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => {
+        if (name.length === 0) {
+            setError("name is required")
+            deleteError()
+        }
+        setName(e.currentTarget.value.trim())
     }
     const addUser = () => {
-        alert(`Hello  !`) // need to fix
+        if (name.length === 0) {
+            setError("name is required")
+            return
+        }
+        addUserCallback(name)
+        setError("")
+        alert(`Hello ${name} !`)
+        setName("")
     }
 
-    const totalUsers = 0 // need to fix
+    const onPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter" && name.length === 0) {
+            setError("name is required")
+            deleteError()
+        }
+        if (e.key === "Enter") {
+            addUser()
+        }
+    }
+
+    const totalUsers = users.length
+    const disabledButton = name.length > 0 ? !disabled : disabled
 
     return (
         <Greeting
             name={name}
+            disabled={disabledButton}
             setNameCallback={setNameCallback}
             addUser={addUser}
+            onPressHandler={onPressHandler}
             error={error}
             totalUsers={totalUsers}
         />
