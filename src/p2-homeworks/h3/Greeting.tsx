@@ -23,10 +23,11 @@ const Greeting: React.FC<GreetingPropsType> = (
                    onChange={setNameCallback}
                    onKeyPress={onPressHandler}
                    className={inputClass}
+                   placeholder={"Please, enter your name!"}
                    autoFocus/>
             <button onClick={addUser} disabled={disabled} className={s.addButton}>ADD</button>
             <span className={s.userCount}>{totalUsers}</span>
-            {name.length === 0 && <div className={s.errorText}>{error}</div>}
+            {!!error && <div className={s.errorText}>{error}</div>}
         </div>
     )
 }
