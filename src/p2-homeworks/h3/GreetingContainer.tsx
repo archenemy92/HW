@@ -16,11 +16,10 @@ type GreetingContainerPropsType = {
 const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUserCallback}) => {
     const [name, setName] = useState<string>("")
     const [error, setError] = useState<string>("")
-    const disabled = true
 
     useEffect(() => {
         if (error) {
-            setTimeout(() => setError(""), 3000)
+            setTimeout(() => setError(""), 5000)
         }
     }, [error])
 
@@ -29,17 +28,20 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
       }*/
 
     const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => {
-        if (name.length === 0) {
-            setError("name is required")
+        let evt = e.currentTarget.value
+        if ( evt.length < 1) {
+             setError("name is required")
             //deleteError()
         }
-        setName(e.currentTarget.value.trim())
-    }
-    const addUser = () => {
-        if (name.length === 0) {
-            setError("name is required")
+        if ( evt.length === 15){
+            setError("the number of values entered has been exceeded")
+            setName("")
             return
         }
+        setName(evt.trim())
+
+    }
+    const addUser = () => {
         addUserCallback(name)
         setError("")
         alert(`Hello ${name} !`)
@@ -47,22 +49,26 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
     }
 
     const onPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter" && name.length === 0) {
+        if (e.key === "Enter" && e.currentTarget.value.length === 0) {
             setError("name is required")
+            return
             //deleteError()
         }
+        if (e.key === " ") {
+            setError("Name mast be without space")
+        }
+
         if (e.key === "Enter") {
             addUser()
         }
     }
 
     const totalUsers = users.length
-    const disabledButton = name.length > 0 ? !disabled : disabled
 
     return (
         <Greeting
             name={name}
-            disabled={disabledButton}
+            disabled={name.length === 0 || name.length === 15}
             setNameCallback={setNameCallback}
             addUser={addUser}
             onPressHandler={onPressHandler}
