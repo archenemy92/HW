@@ -1,45 +1,19 @@
-.content {
+.content{
     display: grid;
     grid-template-areas:
-            "i b u"
-            "e e e";
-    grid-template-columns: 217px 50px 20px;
-    grid-template-rows: 30px 50px;
-    grid-gap: 10px;
-    margin: 20px 0 0 0;
+            "i u"
+            "b b";
+    grid-template-columns: min-content min-content;
 }
-
-.inputError {
-    border-radius: 5px;
+.input{
     grid-area: i;
-    border: 2px solid red;
-    outline: none;
 }
-
-.input {
-    grid-area: i;
-    border-radius: 5px;
-    outline: none;
-    border-color: blue;
-}
-
-.addButton {
+.addButton{
     grid-area: b;
-    border-radius: 50%;
-    background-color: green;
-    font-weight: bold;
-    text-align: center;
 }
-
 .userCount {
     grid-area: u;
-    text-align: center;
-    margin: 3px 0 0 0;
+    margin: 30px 0 0 5px;
     font-weight: bolder;
 }
 
-.errorText {
-    grid-area: e;
-    color: red;
-    font-weight: bold;
-}
