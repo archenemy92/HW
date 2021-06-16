@@ -34,7 +34,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
             //deleteError()
         }
         if ( evt.length === 15){
-            setError("the number of values entered has been exceeded")
+            setError("max 15 symbols")
             setName("")
             return
         }
