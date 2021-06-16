@@ -1,67 +1,45 @@
 .mainContent {
     display: grid;
     grid-template-areas:
-            "aff"
-            "b";
-    grid-template-columns: 11fr 1fr;
-    grid-gap: 20px;
+        "aff"
+        "b";
+    grid-gap: 10px;
 }
 
 .mainContent_affairs {
     grid-area: aff;
+    font-weight: bolder;
 }
-
-.mainContent_buttons {
-    grid-area: b;
-}
-
 
 .mainContent_buttons button {
-    margin: 0 20px 0 0;
-    width: 60px;
-    background-color: blanchedalmond;
-    border-radius: 5px;
+    grid-area: b;
+    margin: 0 10px 0 0 ;
+    font-weight: bolder;
 }
 
-.mainContent_buttons button:hover {
-    background-color: blue;
-    color: white;
-}
 
 .content {
     display: grid;
-    grid-template-areas: "n p a";
-    grid-template-columns: 164px 50px 7fr;
-    grid-gap: 30px;
+    grid-template-areas: "cn cp ca";
+    grid-template-columns: 150px 90px min-content;
 }
 
 .content_name {
-    grid-area: n;
-    padding: 5px;
-    font-weight: bold;
-    border-bottom: solid 1px white;
-    color: indigo;
+    grid-area: cn;
 }
-
-.content_priority {
-    grid-area: p;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
+.content_priority{
+    grid-area: cp;
 }
 
 .content_action {
-    grid-area: a;
-    display: flex;
-    align-items: center;
+    grid-area: ca;
 }
-
-.content_action button {
-    border-radius: 50%;
-    background-color: green;
+.content_action button{
+    background-color: #5dff3e;
+    font-weight: bold;
 }
-
 .content_action button:hover {
-    background-color: red;
+    background-color: #ff524f;
     color: white;
+    font-weight: bold;
 }
