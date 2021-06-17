@@ -8,10 +8,10 @@ function HW4() {
     const [text, setText] = useState<string>("")
     const [error, setError] = useState<string>("")
 
-    useEffect(() => {
+  /*  useEffect(() => {
         setTimeout(() => setError(""), 10000)
     }, [error])
-
+*/
     const showAlert = () => {
         let trim = text.trim()
         if (!trim) {
