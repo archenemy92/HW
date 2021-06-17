@@ -17,28 +17,27 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
     const [name, setName] = useState<string>("")
     const [error, setError] = useState<string>("")
 
-    useEffect(() => {
+  /*  useEffect(() => {
         if (error) {
             setTimeout(() => setError(""), 5000)
         }
-    }, [error])
+    }, [error])*/
 
     /*  const deleteError = () => {
           setTimeout(() => setError(""), 3000)
       }*/
 
     const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => {
-        let evt = e.currentTarget.value
+        let evt = e.currentTarget.value.trim()
         if ( evt.length < 1) {
              setError("name is required")
             //deleteError()
         }
         if ( evt.length === 15){
             setError("max 15 symbols")
-            setName("")
             return
         }
-        setName(evt.trim())
+        setName(evt)
 
     }
     const addUser = () => {
@@ -68,7 +67,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
     return (
         <Greeting
             name={name}
-            disabled={name.length === 0 || name.length === 15}
+            disabled={name.length === 0}
             setNameCallback={setNameCallback}
             addUser={addUser}
             onPressHandler={onPressHandler}
