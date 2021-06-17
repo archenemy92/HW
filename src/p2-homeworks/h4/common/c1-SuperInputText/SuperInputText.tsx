@@ -50,9 +50,9 @@ type SuperInputTextPropsType = DefaultInputPropsType & { // и + ещё проп
                     onChange={onChangeCallback}
                     onKeyPress={onKeyPressCallback}
                     className={finalInputClassName}
-                    placeholder={error?error: ""}
                     {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
                 />
+                {error && <span className={s.error}>{error}</span>}
             </label>
     )
 }
