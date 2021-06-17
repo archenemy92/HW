@@ -25,9 +25,7 @@ const Greeting: React.FC<GreetingPropsType> = (
                    error={error}
                    onChange={setNameCallback}
                    onKeyPress={onPressHandler}
-                   autoFocus
                    label={"enter your name"}
-                   textValue={name}
                    className={s.input}/>
             <Button onClick={addUser} disabled={disabled} className={s.addButton}>ADD</Button>
             <span className={s.userCount}>{totalUsers}</span>
