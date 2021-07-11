@@ -16,11 +16,9 @@ function Header() {
     }
 
     return (
-        <div className={styles.bread_crumbs}>
+        <div className={styles.bread_crumbs} onMouseLeave={()=>setStyle(!style)}>
             <div className={openMenuStyle()}>
-                <div className={styles.hovered}
-                     onClick={() => setStyle(!style)}>
-                </div>
+                <div className={styles.hovered}></div>
                 <div className={styles.b_menu}>
                     <NavLink className={styles.link}
                              activeClassName={styles.activeLink}
