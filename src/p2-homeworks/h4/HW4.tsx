@@ -1,20 +1,36 @@
-import React, {ChangeEvent, useState} from 'react'
-import SuperInputText from './common/c1-SuperInputText/SuperInputText'
-import s from './HW4.module.css'
-import SuperButton from './common/c2-SuperButton/SuperButton'
-import SuperCheckbox from './common/c3-SuperCheckbox/SuperCheckbox'
+import React, {ChangeEvent, useEffect, useState} from "react"
+import Input from "./common/c1-SuperInputText/SuperInputText"
+import s from "./HW4.module.css"
+import Button from "./common/c2-SuperButton/SuperButton"
+import SuperCheckbox from "./common/c3-SuperCheckbox/SuperCheckbox"
 
 function HW4() {
-    const [text, setText] = useState<string>('')
-    const error = text ? '' : 'error'
+    const [text, setText] = useState<string>("")
+    const [error, setError] = useState<string>("")
 
+  /*  useEffect(() => {
+        setTimeout(() => setError(""), 10000)
+    }, [error])
+*/
     const showAlert = () => {
-        if (error) {
-            alert('введите текст...')
-        } else {
-            alert(text) // если нет ошибки показать текст
+        let trim = text.trim()
+        if (!trim) {
+            setError("error")
+            alert("введите текст...")
+        }
+        if (trim) {
+            setText("")
+            setError("")
+            alert(trim) // если нет ошибки показать текст
         }
     }
+    const deleteButton = () => {
+        setText("")
+    }
+    const defaultButton = () => {
+        setText("Name+LastName+FamilyName")
+    }
+
 
     const [checked, setChecked] = useState<boolean>(false)
     const testOnChange = (e: ChangeEvent<HTMLInputElement>) => setChecked(e.currentTarget.checked)
@@ -25,7 +41,9 @@ function HW4() {
             homeworks 4
 
             <div className={s.column}>
-                <SuperInputText
+                <Input
+                    label={"name"}
+                    textValue={text}
                     value={text}
                     onChangeText={setText}
                     onEnter={showAlert}
@@ -33,26 +51,34 @@ function HW4() {
                     // spanClassName={s.testSpanError}
                 />
 
-                <SuperInputText
-                    className={s.blue} // проверьте, рабоет ли смешивание классов
+                <Input
+                    /* label={"name"}
+                     textValue={text}
+                     value={text}
+                     onChangeText={setText}
+                     onEnter={showAlert}
+                     error={error}*/
+                    //для того чтобы были разные данные в обоих инпутах, нужно создавать отдельный стейт здесь,
+                    //или перенести стейт внутрь компоненты
+                    //className={s.blue} // проверьте, рабоет ли смешивание классов
                 />
 
                 {/*----------------------------------------------------*/}
 
-                <SuperButton>
+                <Button onClick={defaultButton}>
                     default
-                </SuperButton>
+                </Button>
 
-                <SuperButton
+                <Button
                     red // пропсу с булевым значением не обязательно указывать true
-                    onClick={showAlert}
+                    onClick={deleteButton}
                 >
                     delete {/*// название кнопки попадёт в children*/}
-                </SuperButton>
+                </Button>
 
-                <SuperButton disabled>
+                <Button disabled>
                     disabled
-                </SuperButton>
+                </Button>
 
                 {/*----------------------------------------------------*/}
 

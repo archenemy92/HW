@@ -22,8 +22,8 @@ const defaultAffairs: AffairType[] = [
 // pure helper functions
 export const filterAffairs = (affairs: AffairType[], filter: FilterType): AffairType[] => {
     if (filter === "all") return affairs
-    else if(filter === "high") return affairs.filter(a=>a.priority === "high")
-    else if(filter === "low") return affairs.filter(a=>a.priority === "low")
+    if(filter === "high") return affairs.filter(a=>a.priority === "high")
+    if(filter === "low") return affairs.filter(a=>a.priority === "low")
     else return affairs.filter(a=>a.priority === "middle")
 }
 export const deleteAffair = (affairs: AffairType[], _id: number): AffairType[] => affairs.filter(a=>a._id !== _id)

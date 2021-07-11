@@ -1,12 +1,39 @@
 .superInput {
+    width: 300px;
+    height: 30px;
+    background-color: #bee5ff ;
+    border-radius: 10px;
+    border: #bee5ff;
+    outline: none;
+    margin: 10px 0 10px 0;
+}
 
+.superInput.errorInput::placeholder{
+    font-weight: bolder;
+    font-size: 22px;
+    color: black;
+}
+.superInput:hover {
+    background-color: #97ceff;
+}
+
+.superInput.errorInput:hover {
+    background-color: #ff524f;
 }
 
 .errorInput {
-    border: 3px solid lime;
-    background: red;
+    background-color: #ff524f;
+}
+
+.label {
+    font-size: 12px;
+    margin: 0 0 0 5px;
 }
 
 .error {
+    display: block;
+    font-size: 10px;
+    margin: -10px 0 10px 15px;
+    height: content-box;
     color: red;
 }

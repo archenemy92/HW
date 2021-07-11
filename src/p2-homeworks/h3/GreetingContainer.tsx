@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
-import Greeting from './Greeting'
+import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from "react"
+import Greeting from "./Greeting"
+import {UserType} from "./HW3"
 
 type GreetingContainerPropsType = {
-    users: any // need to fix any
-    addUserCallback: any // need to fix any
+    users: UserType[]
+    addUserCallback: (name: string) => void
 }
 
 // более простой и понятный для новичков
@@ -11,24 +12,65 @@ type GreetingContainerPropsType = {
 
 // более современный и удобный для про :)
 // уровень локальной логики
-const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUserCallback}) => { // деструктуризация пропсов
-    const [name, setName] = useState<any>('') // need to fix any
-    const [error, setError] = useState<any>('') // need to fix any
 
-    const setNameCallback = (e: any) => { // need to fix any
-        setName('') // need to fix
+const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUserCallback}) => {
+    const [name, setName] = useState<string>("")
+    const [error, setError] = useState<string>("")
+
+  /*  useEffect(() => {
+        if (error) {
+            setTimeout(() => setError(""), 5000)
+        }
+    }, [error])*/
+
+    /*  const deleteError = () => {
+          setTimeout(() => setError(""), 3000)
+      }*/
+
+    const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => {
+        let evt = e.currentTarget.value.trim()
+        if ( evt.length < 1) {
+             setError("name is required")
+            //deleteError()
+        }
+        if ( evt.length === 15){
+            setError("max 15 symbols")
+            return
+        }
+        setName(evt)
+
     }
     const addUser = () => {
-        alert(`Hello  !`) // need to fix
+        addUserCallback(name)
+        setError("")
+        alert(`Hello ${name} !`)
+        setName("")
     }
 
-    const totalUsers = 0 // need to fix
+    const onPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter" && e.currentTarget.value.length === 0) {
+            setError("name is required")
+            return
+            //deleteError()
+        }
+        if (e.key === " ") {
+            setError("Name mast be without space")
+        }
+
+        if (e.key === "Enter") {
+            addUser()
+        }
+    }
+
+    const totalUsers = users.length
 
     return (
         <Greeting
             name={name}
+            disabled={name.length === 0}
             setNameCallback={setNameCallback}
             addUser={addUser}
+            onPressHandler={onPressHandler}
             error={error}
             totalUsers={totalUsers}
         />

@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import {Message} from "./Message"
 import s from "./../../p1-main/m1-ui/u1-app/App.module.css"
+import Button from "../h4/common/c2-SuperButton/SuperButton"
 
 const messages: MessageType[] = []
 export type MessageType = {
@@ -54,7 +55,7 @@ const HW1: React.FC = () => {
                           className={s.text_area_hw}
                           placeholder={"tap a some text and press Shift+Enter or send to view the result"}/>
                 <div>
-                    <button onClick={createMessage}>send</button>
+                    <Button onClick={createMessage}>send</Button>
                 </div>
             </div>
         </div>

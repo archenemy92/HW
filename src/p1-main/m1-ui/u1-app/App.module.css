@@ -14,3 +14,6 @@ margin: 20px;
 .content {
     margin: 5px 0 0 0 ;
 }
+.content button:hover{
+    background-color: #99ff89;
+}
