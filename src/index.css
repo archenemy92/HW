@@ -5,7 +5,7 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: url("https://images.pexels.com/photos/1323550/pexels-photo-1323550.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+    background-color: rgba(200,179,165,0.75);
     background-repeat: no-repeat;
     background-size: 100%;
 }
