@@ -15,7 +15,7 @@ type SuperEditableSpanType = DefaultInputPropsType & { // и + ещё пропс
     spanClassName?: string
     label?: string
     setErrorHandler: (err: string) => void
-    isEditMode:()=>void
+    isEditMode: () => void
     editMode: boolean
     value: string
 
@@ -40,7 +40,6 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
             restProps.setErrorHandler("error: please tap something")
             return
         }
-
         restProps.isEditMode()// выключить editMode при нажатии Enter
         onEnter && onEnter()
     }
@@ -55,6 +54,7 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
         onBlur && onBlur(e)
     }
     const onDoubleClickCallBack = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+        restProps.setErrorHandler("error: please tap something")
         restProps.isEditMode() // включить editMode при двойном клике
 
         onDoubleClick && onDoubleClick(e)
