@@ -1,4 +1,4 @@
-import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent} from 'react'
+import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent} from "react"
 import s from './SuperInputText.module.css'
 
 // тип пропсов обычного инпута
@@ -40,7 +40,7 @@ type SuperInputTextPropsType = DefaultInputPropsType & { // и + ещё проп
         && onEnter() // то вызвать его
     }
 
-    const finalInputClassName = `${error && !textValue?s.errorInput:s.superInput} ${s.superInput} ${className}` // need to fix with (?:) and s.superInput
+    const finalInputClassName = `${error && !textValue? s.errorInput:s.superInput} ${s.superInput} ${className}` // need to fix with (?:) and s.superInput
 
     return (
             <label>
