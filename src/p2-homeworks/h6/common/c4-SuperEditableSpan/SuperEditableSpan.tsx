@@ -1,4 +1,4 @@
-import React, {DetailedHTMLProps, InputHTMLAttributes, HTMLAttributes, useState} from "react"
+import React, {DetailedHTMLProps, InputHTMLAttributes, HTMLAttributes} from "react"
 import SuperInputText from "../../../h4/common/c1-SuperInputText/SuperInputText"
 
 // тип пропсов обычного инпута

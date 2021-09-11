@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from "react"
+import React, {ChangeEvent, useState} from "react"
 import Input from "./common/c1-SuperInputText/SuperInputText"
 import s from "./HW4.module.css"
 import Button from "./common/c2-SuperButton/SuperButton"
@@ -8,10 +8,6 @@ function HW4() {
     const [text, setText] = useState<string>("")
     const [error, setError] = useState<string>("")
 
-  /*  useEffect(() => {
-        setTimeout(() => setError(""), 10000)
-    }, [error])
-*/
     const showAlert = () => {
         let trim = text.trim()
         if (!trim) {
